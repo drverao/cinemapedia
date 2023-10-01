@@ -124,8 +124,8 @@ class MovieDetails {
 class BelongsToCollection {
   final int id;
   final String name;
-  final String posterPath;
-  final String backdropPath;
+  final String? posterPath;
+  final String? backdropPath;
 
   BelongsToCollection({
     required this.id,
@@ -186,7 +186,7 @@ class ProductionCompany {
   factory ProductionCompany.fromJson(Map<String, dynamic> json) =>
       ProductionCompany(
         id: json["id"],
-        logoPath: json["logo_path"],
+        logoPath: json["logo_path"] ?? 'logo-not-found',
         name: json["name"],
         originCountry: json["origin_country"],
       );

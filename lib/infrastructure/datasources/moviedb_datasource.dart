@@ -10,7 +10,7 @@ class MovieDbDatasource extends MoviesDataSource {
   final dio = Dio(
       BaseOptions(baseUrl: 'https://api.themoviedb.org/3', queryParameters: {
     'api_key': Environment.theMovieDbKey,
-    'language': 'en-MX',
+    'language': 'es-ES',
   }));
   @override
   Future<List<Movie>> getNowPlaying({int page = 1}) async {
@@ -55,7 +55,7 @@ class MovieDbDatasource extends MoviesDataSource {
   @override
   Future<Movie> getMovieById(String id) async {
     final response = await dio.get('/movie/$id');
-    if (response.statusCode == 200) {
+    if (response.statusCode != 200) {
       throw Exception('Movie not found');
     }
 
